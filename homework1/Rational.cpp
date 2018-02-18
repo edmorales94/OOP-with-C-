@@ -10,7 +10,13 @@ class Rational{
     public:
         Rational(int numerator, int denominator){
             setNumerator(numerator);
-            setDenominator(denominator);
+            if(denominator > 0){
+                setDenominator(denominator);
+            }
+            else{
+                cout << "Denominator can't be zero or less" <<endl;
+            }
+
         }
         void setNumerator(int numerator){
             this -> numerator = numerator;
@@ -37,6 +43,7 @@ class Rational{
                 cout << newNumerator << "/" << newDenominator<< endl;
             }
         }
+
 };
 
 int main()
