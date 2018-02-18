@@ -48,7 +48,7 @@ class Rational{
                 int gcd = GCD(numerator*-1, denominator);//make it positive to get the gcd
                 cout << numerator/gcd << "/" << denominator/gcd <<endl;//divide the original numerator between the gcd
             }
-            else{//both are positive
+            else{//both are positive or negative
                 int gcd = GCD(numerator, denominator);
                 cout << numerator/gcd << "/" << denominator/gcd <<endl;
             }
@@ -148,8 +148,7 @@ class Rational{
 
 };
 //---------- Main method ---------------------------------------------------------------------------------------------------------
-int main()
-{
+int main(){
     Rational myFraction(1,4);
     cout <<"myFraction numerator: "<<myFraction.getNumerator()<<endl;
     cout << "myFraction denominator: " << myFraction.getDenominator()<<endl;
@@ -170,6 +169,9 @@ int main()
     Rational fraction4(10,-5);//fraction with negative denominator is called an improper fraction. Fractions can have negative denominators but
     cout <<"\nFraction4 numerator: "<<fraction4.getNumerator()<<endl;
     cout << "Fraction4 denominator: " << fraction4.getDenominator()<<endl;
+    fraction4.add(2,3);
     fraction4.substract(-5,2);
+    fraction4.divide(-5,2);
+    fraction4.multiply(-5,2);
     return 0;
 }
