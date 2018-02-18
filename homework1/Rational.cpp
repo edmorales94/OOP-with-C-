@@ -55,6 +55,12 @@ class Rational{
             }
         }
 
+        void multiply(int otherNumerator, int otherDenominator){
+            int newNumerator = getNumerator()*otherNumerator;
+            int newDenominator = getDenominator()*otherDenominator;
+            cout << newNumerator << "/" << newDenominator<< endl;
+        }
+
 };
 
 int main()
@@ -62,5 +68,6 @@ int main()
     Rational myFraction(1,4);
     myFraction.add(6,8);
     myFraction.substract(1,8);
+    myFraction.multiply(3,4);
     return 0;
 }
