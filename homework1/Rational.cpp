@@ -33,6 +33,32 @@ class Rational{
             return this ->denominator;
         }
 
+        int GCD(int firstNumber, int secondNumber){
+            int divided = 0;
+            int gcd = 1;
+            int remaining = 0;
+            if(firstNumber > secondNumber){
+                divided = firstNumber;
+                gcd = secondNumber;
+            }
+            else if(firstNumber == secondNumber){
+                divided = firstNumber;
+                gcd = secondNumber;
+            }
+            else{
+                divided = secondNumber;
+                gcd = firstNumber;
+            }
+            remaining = divided%gcd;
+
+            while(remaining != 0){
+                divided = gcd;
+                gcd = remaining;
+                remaining = divided%gcd;
+            }
+            cout<<gcd<<endl;
+            return gcd;
+        }
         void add(int otherNumerator, int otherDenominator){
             if( getDenominator() == otherDenominator){
                 cout << getNumerator()+otherNumerator << "/" << getDenominator()<< endl;
@@ -61,6 +87,12 @@ class Rational{
             cout << newNumerator << "/" << newDenominator<< endl;
         }
 
+        void divide(int otherNumerator, int otherDenominator){
+            int newNumerator = getNumerator()*otherDenominator;
+            int newDenominator = getDenominator()*otherNumerator;
+            cout << newNumerator << "/" << newDenominator<< endl;
+        }
+
 };
 
 int main()
@@ -69,5 +101,12 @@ int main()
     myFraction.add(6,8);
     myFraction.substract(1,8);
     myFraction.multiply(3,4);
+    myFraction.divide(2,3);
+    myFraction.GCD(10,45);
+    myFraction.GCD(10,12);
+    myFraction.GCD(31,15);
+    myFraction.GCD(30,6);
+    myFraction.GCD(11,22);
+    myFraction.GCD(100,28);
     return 0;
 }
