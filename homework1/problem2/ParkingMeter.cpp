@@ -14,6 +14,18 @@ class ParkingMeter{
             remainingTime = 0;
         }
 
+    void insertQuarters(int numberOfQuarters){
+        if(remainingTime == maxTime){
+            return;
+        }
+        int additionalTime = numberOfQuarters*rate;
+        remainingTime += additionalTime;
+        if(maxTime < remainingTime){
+            remainingTime = maxTime;
+            return;
+        }
+    }
+
 };
 
 int main()
