@@ -12,25 +12,51 @@ class ParkingMeter{
     public:
 //---------- Constructor ---------------------------------------------------------------------------------------------------------
         ParkingMeter(int maximumParkingMinutes, int rate){
-            maxTime = maximumParkingMinutes;//user will define the max amount of time
-            this ->rate = rate;//user will define the number of minutes per quarter
-            remainingTime = 0;//since no quarters have been added, initial remaining time is 0
+            setMaxTime(maximumParkingMinutes);//user will define the max amount of time
+            setRate(rate);//user will define the number of minutes per quarter
+            setRemainingTime(0);//since no quarters have been added, initial remaining time is 0
+        }
+
+//---------- Setters -------------------------------------------------------------------------------------------------------------
+        void setMaxTime(int maximumTime){
+            maxTime = maximumTime;
+        }
+
+        void setRate(int rate){
+            this ->rate = rate;
+        }
+
+        void setRemainingTime(int time){
+            remainingTime = time;
+        }
+
+//---------- Getters -------------------------------------------------------------------------------------------------------------
+        int getMaxTime(){
+            return this ->maxTime;
+        }
+
+        int getRate(){
+            return this ->rate;
+        }
+
+        int getRemainingTime(){
+            return this ->remainingTime;
         }
 //---------- InsertQuarters method -----------------------------------------------------------------------------------------------
-    void insertQuarters(int numberOfQuarters){
-        if(remainingTime == maxTime){//can't exceed the maximum amount of minutes
-            return;//do nothing and end method
+        void insertQuarters(int numberOfQuarters){
+            if(getRemainingTime() == getMaxTime()){//can't exceed the maximum amount of minutes
+                return;//do nothing and end method
+            }
+            int additionalTime = numberOfQuarters*rate;
+            remainingTime += additionalTime;//add the additional time to the remaining time
+            if(getMaxTime() <= getRemainingTime()){//check again we haven't exceeded the maximum amount
+                setRemainingTime(getMaxTime());//if we have, then set the remaining time equal to max
+            }
         }
-        int additionalTime = numberOfQuarters*rate;
-        remainingTime += additionalTime;//add the additional time to the remaining time
-        if(maxTime <= remainingTime){//check again we haven't exceeded the maximum amount
-            remainingTime = maxTime;//if we have, then set the remaining time equal to max
-        }
-    }
 //---------- CheckRemainingTime method -------------------------------------------------------------------------------------------
-    int checkRemainingTime(){
-        return this -> remainingTime;//return remainingTime
-        }
+        int checkRemainingTime(){
+            return getRemainingTime();//return remainingTime
+            }
 
 };
 //---------- main method ---------------------------------------------------------------------------------------------------------
