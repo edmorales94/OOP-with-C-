@@ -44,11 +44,23 @@ class Rational{
             }
         }
 
+        void substract(int otherNumerator, int otherDenominator){
+            if( getDenominator() == otherDenominator){
+                cout << getNumerator()+otherNumerator << "/" << getDenominator()<< endl;
+            }
+            else{
+                int newNumerator = getNumerator()*otherDenominator - otherNumerator*getDenominator();
+                int newDenominator = getDenominator()*otherDenominator;
+                cout << newNumerator << "/" << newDenominator<< endl;
+            }
+        }
+
 };
 
 int main()
 {
     Rational myFraction(1,4);
     myFraction.add(6,8);
+    myFraction.substract(1,8);
     return 0;
 }
