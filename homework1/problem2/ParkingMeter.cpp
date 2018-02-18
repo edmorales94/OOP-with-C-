@@ -5,8 +5,15 @@ using namespace std;
 class ParkingMeter{
     private:
         int maxTime;
-        int rate;
-        int time;
+        int rate;//minutes per quarter
+        int remainingTime;
+    public:
+        ParkingMeter(int maximumParkingMinutes, int rate){
+            maxTime = maximumParkingMinutes;
+            this ->rate = rate;
+            remainingTime = 0;
+        }
+
 };
 
 int main()
