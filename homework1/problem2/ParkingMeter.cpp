@@ -73,4 +73,5 @@ int main(){
     cout << "Remaining time: " << pm1.checkRemainingTime()<<endl;
     pm1.insertQuarters(9);
     cout << "Remaining time: " << pm1.checkRemainingTime()<<endl;
+    return 0;
 }
