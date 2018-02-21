@@ -35,14 +35,18 @@ class Car{
 
 //---------- addGas method -------------------------------------------------------------------------------------------------------
         void addGas(int gallonsToAdd){
-            setFuelLevel(getGas()+(float)(gallonsToAdd));
+            setFuelLevel(getGas()+gallonsToAdd);
         }
 
+//---------- roundFloat method ---------------------------------------------------------------------------------------------------
+        float roundFloat(float decimal){
+            float value = (int)(decimal*100 + .5);
+            return (float)(value)/100;
+        }
 //---------- drive method --------------------------------------------------------------------------------------------------------
         void drive(int milesTravelled){
             float gallonsToRemove = (float)(milesTravelled)/getFuelEfficiency();//get how many gallons were used to travel that distance
-            cout<<"gallonsToremove: " << gallonsToRemove << endl;
-            setFuelLevel(getGas()-gallonsToRemove);//update the level of gallons remaining
+            setFuelLevel(roundFloat(getGas()-gallonsToRemove));//update the level of gallons remaining
             if(getGas()< 0){//make sure we don't get less than 0 gallons
                 setFuelLevel(0);
             }
