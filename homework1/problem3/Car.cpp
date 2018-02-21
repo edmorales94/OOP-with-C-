@@ -45,6 +45,10 @@ class Car{
         }
 //---------- drive method --------------------------------------------------------------------------------------------------------
         void drive(int milesTravelled){
+            if(getGas()<= 0){
+                cout <<"You don't have gas to drive anymore.\nAdd gas"<<endl;
+                return;
+            }
             float gallonsToRemove = (float)(milesTravelled)/getFuelEfficiency();//get how many gallons were used to travel that distance
             setFuelLevel(roundFloat(getGas()-gallonsToRemove));//update the level of gallons remaining
             if(getGas()< 0){//make sure we don't get less than 0 gallons
@@ -59,6 +63,7 @@ class Car{
 int main(){
     Car ToyotaPrius(52);
     cout << "You have : " << ToyotaPrius.getGas() << " gallons remaining" << endl;
+    ToyotaPrius.drive(201);
     ToyotaPrius.addGas(20);
     cout << "You have : " << ToyotaPrius.getGas() << " gallons remaining" << endl;
     ToyotaPrius.drive(121);
