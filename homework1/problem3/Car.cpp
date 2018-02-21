@@ -6,7 +6,7 @@ class Car{
 //---------- Variables -----------------------------------------------------------------------------------------------------------
     private:
         int fuelEfficiency;//miles per gallon
-        int fuelLevel;//gallons in the tank
+        float fuelLevel;//gallons in the tank
 
     public:
 //---------- Constructor ---------------------------------------------------------------------------------------------------------
@@ -20,7 +20,7 @@ class Car{
             fuelEfficiency = efficiency;
         }
 
-        void setFuelLevel(int fuel){
+        void setFuelLevel(float fuel){
             fuelLevel = fuel;
         }
 
@@ -29,18 +29,19 @@ class Car{
             return fuelEfficiency;
         }
 
-        int getGas(){
+        float getGas(){
             return fuelLevel;
         }
 
 //---------- addGas method -------------------------------------------------------------------------------------------------------
         void addGas(int gallonsToAdd){
-            setFuelLevel(getGas()+gallonsToAdd);
+            setFuelLevel(getGas()+(float)(gallonsToAdd));
         }
 
 //---------- drive method --------------------------------------------------------------------------------------------------------
         void drive(int milesTravelled){
-            int gallonsToRemove = (int)(milesTravelled/getFuelEfficiency());//get how many gallons were used to travel that distance
+            float gallonsToRemove = (float)(milesTravelled)/getFuelEfficiency();//get how many gallons were used to travel that distance
+            cout<<"gallonsToremove: " << gallonsToRemove << endl;
             setFuelLevel(getGas()-gallonsToRemove);//update the level of gallons remaining
             if(getGas()< 0){//make sure we don't get less than 0 gallons
                 setFuelLevel(0);
@@ -56,7 +57,7 @@ int main(){
     cout << "You have : " << ToyotaPrius.getGas() << " gallons remaining" << endl;
     ToyotaPrius.addGas(20);
     cout << "You have : " << ToyotaPrius.getGas() << " gallons remaining" << endl;
-    ToyotaPrius.drive(120);
+    ToyotaPrius.drive(121);
     cout << "You have : " << ToyotaPrius.getGas() << " gallons remaining" << endl;
     ToyotaPrius.drive(839);
     cout << "You have : " << ToyotaPrius.getGas() << " gallons remaining" << endl;
