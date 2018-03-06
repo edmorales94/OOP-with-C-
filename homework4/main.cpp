@@ -13,7 +13,14 @@ class Node{
 
 template<typename T>
 class Queue{
+    public:
+        Node<T> *head, *tail;
+        int queueSize;
 
+        Queue(){
+            head = tail = Null;
+            queueSize = 0;
+        }
 };
 int main()
 {
