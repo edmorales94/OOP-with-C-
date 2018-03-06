@@ -52,6 +52,7 @@ class Queue{
                 cout <<"Queue is empty. There's nothing at the front"<<endl;
             }
         }
+
     //---------- back method ---------------------------------------------------------------------------------------------------
         T back(){
             if(tail != Null){
@@ -59,6 +60,25 @@ class Queue{
             }
             else{
                 cout <<"Queue is empty. There's nothing at the back"<<endl;
+            }
+        }
+
+    //---------- push method ---------------------------------------------------------------------------------------------------
+        void push(T value){
+            Node<T> *temp = new Node();
+            temp -> nodeValue = value;
+            temp ->next = Null;
+
+            if(head == Null){
+                head = tail = temp;
+                queueSize++;
+                cout<<value<<" was successfully inserted at the front"<<endl;
+            }
+            else{
+                tail ->next = temp;
+                tail = temp;
+                queueSize++;
+                cout<<value<<" was successfully inserted at the end"<<endl;
             }
         }
 };
