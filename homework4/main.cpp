@@ -52,6 +52,15 @@ class Queue{
                 cout <<"Queue is empty. There's nothing at the front"<<endl;
             }
         }
+    //---------- back method ---------------------------------------------------------------------------------------------------
+        T back(){
+            if(tail != Null){
+                return tail -> nodeValue;
+            }
+            else{
+                cout <<"Queue is empty. There's nothing at the back"<<endl;
+            }
+        }
 };
 int main()
 {
