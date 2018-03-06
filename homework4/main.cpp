@@ -34,6 +34,14 @@ class Queue{
         void bool empty(){
             return head == Null && tail == Null;//returns true if the head and tail are empty
         }
+
+    //---------- size method ---------------------------------------------------------------------------------------------------
+        int size(){
+            if(queueSize < 0){//size can't be less than zero
+                queueSize = 0;//in that case, set the size to zero
+            }
+            return queueSize;
+        }
 };
 int main()
 {
