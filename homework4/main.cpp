@@ -28,7 +28,7 @@ class Queue{
         T back();
         void push();
         T pop();
-        ~Queue();
+       // ~Queue();
 
     //---------- empty method --------------------------------------------------------------------------------------------------
         void bool empty(){
@@ -80,6 +80,18 @@ class Queue{
                 queueSize++;
                 cout<<value<<" was successfully inserted at the end"<<endl;
             }
+        }
+
+    //---------- pop method ----------------------------------------------------------------------------------------------------
+        T pop(){
+            if(head == Null){
+                count <<"Queue is empty. Can't pop anything"<<endl;
+                return;
+            }
+            T value = head -> nodeValue;
+            head = head ->next;
+            queueSize--;
+            return value;
         }
 };
 int main()
