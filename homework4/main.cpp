@@ -42,6 +42,16 @@ class Queue{
             }
             return queueSize;
         }
+
+    //---------- front method --------------------------------------------------------------------------------------------------
+        T front(){
+            if(head != Null){
+                return head -> nodeValue;
+            }
+            else{
+                cout <<"Queue is empty. There's nothing at the front"<<endl;
+            }
+        }
 };
 int main()
 {
