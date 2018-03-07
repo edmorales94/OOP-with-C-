@@ -24,14 +24,14 @@ class Queue{
         }
 
     //---------- Destructor ----------------------------------------------------------------------------------------------------
-    ~Queue(){
-        while(head != NULL){
-            Node<T> *temp = head;//Save the current head
-            head = head->next;//move the current head to the next element, which becomes the new head
-            delete temp;//delete the former head
-        }
-        tail = NULL;
-        cout<<"The queue was destroyed"<<endl;
+        virtual ~Queue(){
+            while(head != NULL){
+                Node<T> *temp = head;//Save the current head
+                head = head->next;//move the current head to the next element, which becomes the new head
+                delete temp;//delete the former head
+            }
+            tail = NULL;
+            cout<<"The queue was destroyed"<<endl;
     }
     //---------- empty method --------------------------------------------------------------------------------------------------
         bool empty(){
@@ -115,9 +115,30 @@ class Queue{
                 cout<<temp -> nodeValue <<" ";//get the current value
                 temp = temp ->next;//next will be the copy of the next value
             }
+            delete temp;
             cout<<endl;
         }
 
+};
+
+
+template<typename T>
+class DerivedQueue: public Queue<T>{
+    public:
+        void emergency_push(T item){//adds a node at the front of the list
+            if(this->empty()){//if the queue is empty, then add it at the front
+                cout<<"Queue was empty during the emergency_push"<<endl;
+                this->push(item);//the push method handles an empty queue
+            }
+            else{
+                Node<T> *temp = new Node<T>(item);
+                temp ->next = this->head;
+                this->head = temp;
+                //delete temp;
+                cout<<"Emergency_push added " << item<< " a the front successfully"<<endl;
+                delete temp;
+            }
+        }
 };
 //---------- main method --------------------------------------------------------------------------------------------------------
 int main()
@@ -147,5 +168,12 @@ int main()
     myQueue.front();
     myQueue.back();
     cout << "is myQueue empty? : " << myQueue.empty()<<endl;
+
+    cout<<"\n"<<endl;
+    DerivedQueue<int> myOtherQueue;
+    myOtherQueue.emergency_push(1);
+    myOtherQueue.emergency_push(2);
+    myOtherQueue.emergency_push(3);
+    myOtherQueue.display();
     return 0;
 }
